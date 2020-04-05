@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Board from './Board'
+import Clock from './Clock'
 import { calculateWinner } from './utils/logic';
 
 interface movement {
@@ -38,6 +39,7 @@ const Game = () => {
         <div className="game">
             <div className="game-board">
                 <Board values={scope.values} onClick={(i: number) => handleClick(i)} />
+                <Clock />
             </div>
             <div className="game-info">
                 <div>{status}</div>
