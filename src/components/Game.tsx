@@ -13,6 +13,7 @@ const initialMove: Array<movement> = [];
 const Game = () => {
     const [scope, setScope] = useState({ values: defaultValues, nextValue: 'X', history: initialMove });
     const winner: string = calculateWinner(scope.values);
+    let status: string;
 
     const handleClick = (i: number) => {
         let values: Array<string> = scope.values.slice();
@@ -33,7 +34,12 @@ const Game = () => {
         setScope({ values: scope.history[m].values.slice(), nextValue: scope.history[m].nextValue, history: scope.history.slice(0, m) });
     }
 
-    let status: string = winner ? `Winner: ${winner}` : `Next player: ${scope.nextValue}`
+    if (winner)
+        status = `Winner: ${winner}`
+    else if (scope.history.length === 9)
+        status = 'Game Over'
+    else
+        status = `Next player: ${scope.nextValue}`
 
     return (
         <div className="game">
