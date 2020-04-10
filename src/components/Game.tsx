@@ -59,7 +59,6 @@ const Game = () => {
                         })
                     }
                 </ol>
-
             </div>
         </div>
     );
